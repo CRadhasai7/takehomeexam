@@ -13,9 +13,9 @@ import org.mockito.Mockito;
 
 class Test_Exam {
 	
-	private Inventory itemINV;
+	private Inventory itemn;
 	
-	private Inventory spyitemINV;
+	private Inventory spyitemen;
 	
 	private InventoryItem mockItem;
 	
@@ -23,9 +23,9 @@ class Test_Exam {
 	@BeforeEach
 	void setUp() throws Exception {
 		
-	itemINV = new Inventory();
-	Inventory itemINV1 = new Inventory();
-	spyitemINV = spy(itemINV1);
+	itemn = new Inventory();
+	Inventory itemn1 = new Inventory();
+	spyitemen = spy(itemn1);
 	mockItem = mock(InventoryItem.class);
 		
 	}
@@ -35,11 +35,11 @@ class Test_Exam {
 		
 		when(mockItem.getWeight()).thenReturn(249);
 		
-		boolean expected_result = spyitemINV.addItemToInventory(mockItem);
+		boolean expected_result = spyitemen.addItemToInventory(mockItem);
 		
 		assertTrue(expected_result, "Item is not added");
 		
-		assertEquals(1, spyitemINV.items.size(), "The item is not added to inventory");
+		assertEquals(1, spyitemen.items.size(), "The item is not added to inventory");
 		
 		
 	}
@@ -48,11 +48,11 @@ class Test_Exam {
 	void test_dropInventory()
 	{
 		InventoryItem item1 =new InventoryItem("car",249, "Honda civic", 10);
-		itemINV.addItemToInventory(item1);
+		itemn.addItemToInventory(item1);
 		
-		assertEquals(1,itemINV.items.size(), "There are no items in the inventory");
+		assertEquals(1,itemn.items.size(), "There are no items in the inventory");
 		
-		boolean expected_result = itemINV.dropInventoryItem(item1);
+		boolean expected_result = itemn.dropInventoryItem(item1);
 		
 		assertTrue(expected_result,"not able to find in the inventory");
 		
@@ -63,10 +63,10 @@ class Test_Exam {
 	void test_TOstring()
 	{
 		InventoryItem item2 =new InventoryItem("baseball",249,"baseballbats", 10);
-		itemINV.addItemToInventory(item2);
+		itemn.addItemToInventory(item2);
 		
 		String expected = "Your inventory has:\n" + item2.toString();
-		String actual = itemINV.toString();
+		String actual = itemn.toString();
 		
 		assertEquals(expected, actual, " in valid");
 		
